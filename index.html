@@ -9,6 +9,8 @@
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
 
+	
+	
     // Wait for device API libraries to load
     //
     document.addEventListener("deviceready",onDeviceReady,false);
@@ -65,9 +67,10 @@
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL });
+        destinationType: destinationType.DATA_URL, saveToPhotoAlbum: true, Camera.Direction = 1, correctOrientation: true });
     }
-
+	
+	
     // A button will call this function
     //
     function capturePhotoEdit() {
@@ -95,9 +98,6 @@
   </head>
   <body>
     <button onclick="capturePhoto();">Capture Photo</button> <br>
-    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
   </body>
