@@ -67,13 +67,7 @@
     function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL});
-    }
-
-    function captureSelfie() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: destinationType.DATA_URL, Camera.Direction: 1});
+        destinationType: destinationType.DATA_URL, saveToPhotoAlbum: true, Camera.Direction: 1, correctOrientation: true });
     }
 	
 	
@@ -106,10 +100,5 @@
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
     <img style="display:none;" id="largeImage" src="" />
-    <button onclick="captureSelfie();">Capture selfie</button> <br>
-	<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
-	<p>
-	<a href="http://www.sweden.se">Sweden.se</a>
   </body>
 </html>
