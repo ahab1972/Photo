@@ -11,30 +11,28 @@
 
     // Wait for device API libraries to load
     //
-    document.addEventListener("deviceready",onDeviceReady,false);
+	function onLoad() {
+		document.addEventListener("deviceready", onDeviceReady, false);
+	}
+
 
 	// Wait for Cordova to load
-//
-
+	//
 
 	
     // device APIs are available
     //
     function onDeviceReady() {
+		alert('DeviceReady is called')
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
 		
-		var ref = window.open('http://apache.org', '_blank', 'location=yes');
-		ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
-		ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
-		ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
-		ref.addEventListener('exit', function(event) { alert(event.type); });
-
     }
 
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
+		alert('onPhotoDataSuccess is called')
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
 
@@ -67,6 +65,7 @@
 
     // A button will call this function
     function capturePhoto() {
+		alert('CapturePhoto is called')
       // Take picture using device camera and retrieve image as base64-encoded string
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { 
 		quality: 50,
@@ -107,13 +106,14 @@
 	}
 	
 	function captureVideo() {
-		alert('capturing video')
+		alert('CaptureVideo is called')
 		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+		alert('CaptureVideo has been performed')
 	}
 	</script>
 	
   </head>
-  <body>
+  <body onLoad="onLoad()">
     <button onclick="capturePhoto();">Capture Photo</button> <br>
     
 	<h1>Learn more about Sweden</h1>
@@ -131,8 +131,8 @@
 
 	<h1>In app browser</h1>
 	<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_blank','location=yes','closebuttoncaption=Return');" value="InAppBrowser">
-	<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_system','location=yes','closebuttoncaption=Return');" value="System browser">
-	<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_self','location=yes','closebuttoncaption=Return');" value="Webview">  
+	<input type="button" id="button2" onclick="window.open('http://bit.ly/iphonedevlog','_system','location=yes','closebuttoncaption=Return');" value="System browser">
+	<input type="button" id="button3" onclick="window.open('http://bit.ly/iphonedevlog','_self','location=yes','closebuttoncaption=Return');" value="Webview">  
   
   <div class="app">
 	<h1>VideoCapturePlus</h1>
