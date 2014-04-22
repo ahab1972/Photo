@@ -108,6 +108,29 @@
 	<a href="http://www.studyinsweden"><img src="4.jpg" alt="fourth link" width="300" height="200"></a>
 	</p>
   
+ <script type="text/javascript" charset="utf-8">
+	function captureSuccess(mediaFiles) {
+		alert('OK');
+		return;
+	}
+
+	function captureError(error) {
+		var msg = 'An error occurred during capture: ' + error.code;
+		navigator.notification.alert(msg, null, 'Uh oh!');
+	}
+	
+	function captureVideo() {
+		navigator.device.capture.captureVideo(captureSuccess, captureError, {limit: 1});
+	}
+</script>
+
+<h1>New code</h1>
+<button onclick="captureVideo();">Capture Video</button> <br>
+</p>
+
+
+  
+  
   <div class="app">
 	<h1>VideoCapturePlus</h1>
 		<div id="deviceready" class="blink">
@@ -116,13 +139,13 @@
 		</div>
 		<div id="pluginsDemoDiv">
 			<p>
-			  <button onclick="videoCapturePlus(false,false,2)">LQ back 2s</button>
+			  <button onclick="captureVideo(false,false,2)">LQ back 2s</button>
 			  <br/><br/>
-			  <button onclick="videoCapturePlus(true,false,3)">HQ back 3s</button>
+			  <button onclick="captureVideo(true,false,3)">HQ back 3s</button>
 			  <br/><br/>
-			  <button onclick="videoCapturePlus(false,true,4)">LQ front 4s</button>
+			  <button onclick="captureVideo(false,true,4)">LQ front 4s</button>
 			  <br/><br/>
-			  <button onclick="videoCapturePlus(true,true,5)">HQ front 5s</button>
+			  <button onclick="captureVideo(true,true,5)">HQ front 5s</button>
 			</p>
 			<div id="video_meta_container"></div>
 			<div id="video_meta_container2"></div>
