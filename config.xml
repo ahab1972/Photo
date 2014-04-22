@@ -21,6 +21,8 @@
         </author>
 		
 		<gap:plugin name="org.apache.cordova.camera" version="0.2.4" />
-		<gap:plugin name="nl.x-services.plugins.videocaptureplus" version="1.2" />
+		<!-- <gap:plugin name="nl.x-services.plugins.videocaptureplus" version="1.2" /> -->
+		<gap:plugin name="org.apache.cordova.inappbrowser" version="0.2.4" /> 
+		<gap:plugin name="org.apache.cordova.media-capture" version="0.2.8" />
 
     </widget>

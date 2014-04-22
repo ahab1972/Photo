@@ -13,11 +13,23 @@
     //
     document.addEventListener("deviceready",onDeviceReady,false);
 
+	// Wait for Cordova to load
+//
+
+
+	
     // device APIs are available
     //
     function onDeviceReady() {
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
+		
+		var ref = window.open('http://apache.org', '_blank', 'location=yes');
+		ref.addEventListener('loadstart', function(event) { alert('start: ' + event.url); });
+		ref.addEventListener('loadstop', function(event) { alert('stop: ' + event.url); });
+		ref.addEventListener('loaderror', function(event) { alert('error: ' + event.message); });
+		ref.addEventListener('exit', function(event) { alert(event.type); });
+
     }
 
     // Called when a photo is successfully retrieved
@@ -128,8 +140,10 @@
 <button onclick="captureVideo();">Capture Video</button> <br>
 </p>
 
-
-  
+<h1>In app browser</h1>
+<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_blank','location=yes','closebuttoncaption=Return');" value="InAppBrowser">
+<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_system','location=yes','closebuttoncaption=Return');" value="System browser">
+<input type="button" id="button1" onclick="window.open('http://bit.ly/iphonedevlog','_self','location=yes','closebuttoncaption=Return');" value="Webview">  
   
   <div class="app">
 	<h1>VideoCapturePlus</h1>
